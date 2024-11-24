@@ -40,8 +40,10 @@ INSTALLED_APPS = [
     "playground.apps.PlaygroundConfig",
     'debug_toolbar',
     "store.apps.StoreConfig",
+    "store_custom",
     "tags.apps.TagConfig",
-    "likes.apps.LikesConfig"
+    "likes.apps.LikesConfig",
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -84,8 +86,11 @@ WSGI_APPLICATION = 'storefrontv2.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'storefrontv2',
+        'USER': 'root',
+        'PASSWORD': 'mysqlpassword',
+        'HOST': '127.0.0.1',
     }
 }
 
@@ -130,3 +135,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    "COERCE_DECIMAL_TO_STRING": False,
+}
